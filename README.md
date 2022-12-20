@@ -1,6 +1,6 @@
 Setup:
 
-npm install
+npm install  
 npm run dev
 
 enjoy :D
