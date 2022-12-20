@@ -1,7 +1,3 @@
-import { addBotsCompleteList, setPageNum } from "./redux/botSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { URL_AWS_FETCH_LIST } from "./const/Constants";
-
 export default function LoadMore(props: {handleClick: Function}) {
 
   return <>

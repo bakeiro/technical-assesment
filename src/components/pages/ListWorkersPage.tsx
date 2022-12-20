@@ -5,18 +5,18 @@ import BotListI from "../interfaces/BotListI";
 import { useEffect, useState } from "react";
 import { useGetBotsPageQuery } from "../redux/botAPI";
 
+function filterBotsListByWord(filterString: string, allBots: Array<BotListI>): Array<BotListI> {
+  let filteredBots = allBots.filter((bot) => {
+    return `${bot.first_name} ${bot.last_name}`.includes(filterString) || bot.profession.includes(filterString);
+  });
+  return filteredBots;
+}
+
 export default function ListWorkersPage(props: {page: number, setPage:Function}) {
 
   const [botsFilteredList, setBotsFilteredList] = useState([]);
   const [valueToFilter, setValueToFilter] = useState("");
   const { data = [] } = useGetBotsPageQuery(props.page);
-
-  function filterBotsListByWord(filterString: string, allBots: Array<BotListI>): Array<BotListI> {
-    let filteredBots = allBots.filter((bot) => {
-      return `${bot.first_name} ${bot.last_name}`.includes(filterString) || bot.profession.includes(filterString);
-    });
-    return filteredBots;
-  }
 
   useEffect(() => {
     if (data.length) {
